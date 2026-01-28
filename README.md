@@ -1,21 +1,18 @@
 # 📉 Customer Retention System (End-to-End ML Project)
 
-An end-to-end customer churn prediction system built using real-world telecom data.
-The project demonstrates how machine learning models are taken from raw data
-to a production-ready system with APIs and a business-facing UI.
+An end-to-end customer churn prediction system built using real-world telecom data.  
+This project demonstrates how machine learning models can be taken from raw data to a **production-ready system** with APIs and a business-facing UI.
 
 ---
 
 ## 🔍 Business Context
 
-In the telecom industry, acquiring new customers is significantly more expensive
-than retaining existing ones. Identifying customers who are likely to churn allows
-business teams to take proactive retention actions such as personalized offers,
-pricing interventions, or customer outreach.
+In the telecom industry, acquiring new customers is significantly more expensive than retaining existing ones.  
+Identifying customers who are likely to churn enables business teams to take **proactive retention actions** such as targeted offers, pricing interventions, or customer outreach.
 
 This project focuses on:
 - Understanding customer usage behavior
-- Segmenting customers based on patterns
+- Segmenting customers based on usage patterns
 - Predicting churn risk at an individual level
 - Making predictions accessible to non-technical users
 
@@ -23,17 +20,17 @@ This project focuses on:
 
 ## 🎯 Business Objectives
 
-- Segment customers based on usage behavior
-- Define a churn proxy in absence of explicit churn labels
-- Build a robust churn prediction model
-- Expose predictions via an API
-- Provide a simple UI for business decision-making
+- Segment customers based on usage behavior  
+- Define a churn proxy in the absence of explicit churn labels  
+- Build a robust churn prediction model  
+- Expose predictions via an API  
+- Provide a simple UI for business decision-making  
 
 ---
 
 ## 🧠 Solution Overview
 
-The system follows a **production-grade ML pipeline**:
+The system follows a **production-grade machine learning pipeline**:
 
 1. Data understanding and cleaning  
 2. Feature selection and missing value treatment  
@@ -49,103 +46,95 @@ The system follows a **production-grade ML pipeline**:
 
 ## 🏗️ System Architecture
 
-User (Browser)
-↓
-Streamlit UI (Frontend)
-↓
-FastAPI Inference API
-↓
-Trained ML Model (Joblib)
+The system is designed as a modular, API-driven architecture:
+
+- **Frontend Layer**:  
+  Streamlit-based UI that allows business users to input customer details and view churn predictions.
+
+- **Inference Layer**:  
+  FastAPI service that receives requests from the UI, processes inputs, and returns predictions.
+
+- **Model Layer**:  
+  A trained churn prediction model persisted using Joblib and loaded during inference.
+
+This separation ensures scalability, maintainability, and clear responsibility across components.
 
 ## 📁 Project Structure
 
-Customer Retention System/
-│
-├── src/
-│ ├── app.py
-│ └── inference/
-│ └── predict.py
-│
-├── models/
-│ └── churn_model.joblib
-│
-├── ui/
-│ └── app.py
-│
-├── Data/
-│ ├── raw/
-│ └── processed/
-│
-├── requirements.txt
-└── README.md
+- `src/` – Backend source code  
+  - `app.py` – FastAPI application entry point  
+  - `inference/` – Model inference logic  
+    - `predict.py`
+
+- `models/` – Persisted machine learning models  
+  - `churn_model.joblib`
+
+- `ui/` – Streamlit frontend  
+  - `app.py`
+
+- `Data/` – Dataset storage  
+  - `raw/` – Original data  
+  - `processed/` – Cleaned and feature-engineered data  
+
+- `requirements.txt` – Project dependencies  
+- `README.md` – Project documentation
+
+
+---
 
 ## 🤖 Modeling Approach
 
-- Customer segmentation was performed using KMeans clustering based on usage behavior.
-- Since explicit churn labels were unavailable, a churn proxy was defined using prolonged inactivity.
-- A supervised classification model was trained to predict churn probability.
-- Model performance was evaluated using accuracy and ROC-AUC.
+- Customer segmentation was performed using **KMeans clustering** based on usage behavior.
+- Since explicit churn labels were unavailable, a **churn proxy** was defined using prolonged inactivity and low usage patterns.
+- A supervised classification model was trained to predict **churn probability**.
+- Model performance was evaluated using **Accuracy** and **ROC-AUC** metrics.
 
+---
 
 ## 🚀 How to Run the Project Locally
-### Start FastAPI Backend
+
+### 1️⃣ Start FastAPI Backend
 
 ```bash
 uvicorn src.app:app --reload
 
 FastAPI will run at:
-
 http://127.0.0.1:8000
 
 Swagger UI:
-
 http://127.0.0.1:8000/docs
 
-## 6️⃣ Start Streamlit Frontend
+###2️⃣ Start Streamlit Frontend
 
 Run the Streamlit application to access the user interface:
-
-```bash
 streamlit run ui/app.py
 
+The Streamlit UI will open at:
 http://localhost:8501
 
-
-📌 **Important fixes vs what you wrote**
-- `http://localhost:8501` must be **outside** the bash block
-- No nested ```markdown inside README
-- Clean and professional
-
----
-
-## 🔹 7️⃣ Output
-
-👉 Paste **exactly this** below it:
-
-```markdown
-## 📊 Output
+Output
 
 The system provides the following outputs to the user:
 
-- Churn probability score (between 0 and 1)
-- Binary churn prediction (Yes / No)
-- Real-time prediction through the Streamlit UI
+Churn probability score (between 0 and 1)
+
+Binary churn prediction (Yes / No)
+
+Real-time predictions through the Streamlit UI
+
+
+Key Learnings
+
+Designing end-to-end ML systems beyond notebooks
+
+Translating business problems into machine learning formulations
+
+Handling the absence of explicit labels using business-driven proxies
+
+Deploying models using APIs and integrating them with a frontend UI
+
+Maintaining clean and logical Git commit history
 
 
 
-## 💡 Key Learnings
-
-- Building end-to-end ML systems beyond notebooks
-- Defining churn labels using business logic
-- Deploying models via APIs
-- Integrating backend and frontend systems
-- Maintaining clean Git commit history
-
-
-## 👤 Author
-
-Pratik Raj  
-Master’s in Analytics, TISS Mumbai
-
-Project completed as part of end-to-end ML system design.
 
