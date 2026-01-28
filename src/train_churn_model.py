@@ -7,11 +7,14 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score, roc_auc_score
 
+import joblib
+
 
 # ===============================
 # Paths
 # ===============================
 DATA_PATH = Path("Data/processed/churn_labeled_data.csv")
+MODEL_OUTPUT_PATH = Path("models/churn_model.joblib")
 
 
 def load_data():
@@ -51,9 +54,16 @@ def train_and_evaluate(X, y):
     print(f"Accuracy : {acc:.4f}")
     print(f"ROC-AUC  : {auc:.4f}")
 
+    MODEL_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    joblib.dump(pipeline, MODEL_OUTPUT_PATH)
+    print("Model saved to models/churn_model.joblib")
+
 
 if __name__ == "__main__":
     df = load_data()
     X, y = prepare_features(df)
     train_and_evaluate(X, y)
+
+
+
 
