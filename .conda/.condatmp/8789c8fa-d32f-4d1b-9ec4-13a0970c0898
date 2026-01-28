@@ -1,0 +1,13 @@
+prefix=c:/Users/PRATIK RAJ/OneDrive/Desktop/Customer Retention System/.conda/Library
+exec_prefix=c:/Users/PRATIK RAJ/OneDrive/Desktop/Customer Retention System/.conda/Library
+libdir=c:/Users/PRATIK RAJ/OneDrive/Desktop/Customer Retention System/.conda/Library/lib
+sharedlibdir=c:/Users/PRATIK RAJ/OneDrive/Desktop/Customer Retention System/.conda/Library/lib
+includedir=c:/Users/PRATIK RAJ/OneDrive/Desktop/Customer Retention System/.conda/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.3.1
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}
